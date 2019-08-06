@@ -1,3 +1,4 @@
+#更多文档操作可以见http://www.tcl.tk/man/tcl8.6/TkCmd/text.htm#M85
 #encoding=utf-8
 from tkinter import filedialog
 import tkinter as tk
