@@ -4,8 +4,8 @@ import tkinter as tk
 class Note():
     def __init__(self):
         self.mytk=tk.Tk()
-        self.creatUI()
-        self.mytk.mainloop()
+        self.creatUI() #设置菜单
+        self.mytk.mainloop() #展示界面
     def creatUI(self):
         menubar=tk.Menu(self.mytk)
         #定义一个空菜单单元
@@ -52,15 +52,15 @@ class Note():
             with open(temp_filename,'wb') as f:
                 f.write(var.encode())
                 f.close()
+    #复制同时把当前选择内容删除，选择的内容可以sel的tag表示，可以用sel.first和sel.last来寻址
     def cutContent(self):
-        index=self.mytext.index()
-        print(index)
-        cutText=self.mytext.get()
-        print(cutText)
-        pass
+        self.tempVar=self.mytext.get('sel.first','sel.last')
+        self.mytext.delete('sel.first','sel.last')
+    #复制选择的内容
     def copyContent(self):
-        pass
+        self.tempVar=self.mytext.get('sel.first','sel.last')
+    #粘贴在剪贴版上的内容
     def pasteContent(self):
-        pass
+        self.mytext.insert('insert',self.tempVar)
 if __name__=='__main__':     
     Note()
